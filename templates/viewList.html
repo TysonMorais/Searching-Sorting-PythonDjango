@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color:  #3C3C3C;color:white;">
+  <header style="width: 100%;">
+    <div class="container">
+        <div class="row"> 
+          <a style="text-decoration:none" href="/index">
+            <button style="background-color: #FF6766;cursor: pointer;color:white;border: none;">
+              <i class="fa fa-home" style="background-color: #FF6766;border: none;color: white;padding: 12px 16px;font-size: 16px;cursor: pointer;"></i>Home
+            </button>
+          </a>
+        </div>
+        <div class="row">
+          <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Names" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Guardians Name" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="House no" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput4" onkeyup="myFunction4()" placeholder="House Name" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput5" onkeyup="myFunction5()" placeholder="Gender" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput6" onkeyup="myFunction6()" placeholder="Age" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput7" onkeyup="myFunction7()" placeholder="ID Card no" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+          <input type="text" id="myInput8" onkeyup="myFunction8()" placeholder="Booth no" style="padding-top: 2%;background-color:  #3C3C3C;color:white;">
+        </div>
+      </div>
+    </div><!--   <span class="counter pull-right"></span>   -->
+  </header>  
+  <section>
+    <div class="container">
+      <table id="myTable" class="table searchable sortable" style="border-collapse: collapse; width: 100%;border: 1px solid #ddd; font-size: 18px;">
+        <thead style="padding-top: 2%; background-color: #FF6766">
+          <tr class="header" style="text-align: left;border-bottom: 3px solid black;padding-top: 2%;font-size: 20px">
+            <th>ID</th>
+            <th class="col-md-5 col-xs-5">Name</th>
+            <th class="col-md-5 col-xs-5">Guardian Name</th>
+            <th class="col-md-5 col-xs-5">House No</th>
+            <th class="col-md-5 col-xs-5">House Name</th>
+            <th class="col-md-5 col-xs-5">Gender</th>
+            <th class="col-md-5 col-xs-5">Age</th>
+            <th class="col-md-5 col-xs-5">ID Card No</th>
+            <th class="col-md-5 col-xs-5">Booth No</th>
+          </tr>
+              <!-- <tr class="warning no-result">
+              <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+              </tr>-->
+        </thead>
+        {% for datas in alldata %}
+        <tbody>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th scope="row">{{ datas.id }}</th>
+            <td>{{ datas.user_name }}</td>
+            <td>{{ datas.guardian_name }}</td>
+            <td>{{ datas.house_no }}</td>
+            <td>{{ datas.house_name }}</td>
+            <td>{{ datas.gender }}</td>
+            <td>{{ datas.age }}</td>
+            <td>{{ datas.id_card_no }}</td>
+            <td>{{ datas.booth_no }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </section>
+  <script type="text/javascript">
+    function myFunction1() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput1");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction2() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput2");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction3() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput3");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction4() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput4");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[3];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction5() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput5");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction6() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput6");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[5];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction7() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput7");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[6];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function myFunction8() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("myInput8");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[7];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
